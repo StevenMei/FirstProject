@@ -1,0 +1,77 @@
+[mysql]
+default-character-set=utf8
+port            = 3306
+socket = /opt/projectdir/mysql/mysql.sock
+prompt="\u@\h \d>"
+
+[mysqld]
+character_set_server=utf8
+port            = 3306
+basedir	= /opt/projectdir/mysql
+datadir = /opt/mysqldata
+socket = /opt/projectdir/mysql/mysql.sock
+skip-external-locking
+skip_name_resolve
+key_buffer_size = 1024M
+net_buffer_length = 8K
+server-id=001
+#read-only=1
+log-bin=/opt/mysqldata/mysql-bin
+log-error=/opt/mysqldata/mysqld.err
+pid-file=/opt/mysqldata/mysqld.pid
+binlog_format=mixed
+binlog_cache_size=20m
+sync_binlog=0
+expire_logs_days=7
+
+
+innodb_flush_log_at_trx_commit=2
+innodb_additional_mem_pool_size = 16M
+innodb_use_sys_malloc = 1
+innodb_data_file_path = ibdata1:1024M:autoextend
+innodb_file_per_table=1
+innodb_max_dirty_pages_pct=30
+innodb_log_files_in_group = 2
+innodb_io_capacity=1000
+innodb_write_io_threads=16
+innodb_lock_wait_timeout=120
+max_connections=1000
+thread_cache_size = 64
+table_cache = 1024
+innodb_log_file_size=256m
+innodb_log_buffer_size = 16M
+max_binlog_size=400m
+max_allowed_packet=32m
+open_files_limit=1000
+sql_mode='STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION'
+innodb_buffer_pool_size=4G
+
+myisam_sort_buffer_size = 128M
+myisam_max_sort_file_size = 10G
+myisam_repair_threads = 1
+myisam_recover_options
+lower_case_table_names = 1
+sort_buffer_size=16m
+read_buffer_size=8m
+join_buffer_size=16m
+tmp_table_size=2048m
+max_heap_table_size=1024m
+read_rnd_buffer_size=16m
+query_cache_size=64m
+slow_query_log=ON
+long_query_time=3
+
+[mysqldump]
+quick
+max_allowed_packet = 16M
+[myisamchk]
+key_buffer_size = 200M
+sort_buffer_size = 200M
+read_buffer = 20M
+write_buffer = 20M
+
+[mysqlhotcopy]
+
+[mysqladmin]
+port            = 3306
+socket	= /opt/projectdir/mysql/mysql.sock
