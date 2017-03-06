@@ -1,0 +1,1 @@
+2016/10/26 14:12:11 [emerg] 10048#0: getpwnam("www") failed in /usr/local/snailapps/nginx//conf/nginx.conf:1
